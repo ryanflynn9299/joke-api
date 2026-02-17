@@ -1,0 +1,20 @@
+# Secrets
+.env
+.env.local
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Dependencies
+frontend/node_modules/
+
+# Database
+initdb.d/

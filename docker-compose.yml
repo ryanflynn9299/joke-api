@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+  ja-database:
+    image: postgres:16-alpine
+    container_name: ja-database
+    restart: unless-stopped
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    ports:
+      - "5432:5432" # comment out on server, for local dev only
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    networks:
+      - backend-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+# NOTES:
+# depends_on:
+#      ja-database:
+#        condition: service_healthy
+
+volumes:
+  postgresql_data:
+    driver: local
+
+networks:
+  backend-net:
+    external: true

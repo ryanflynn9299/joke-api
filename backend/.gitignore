@@ -1,0 +1,52 @@
+# Ignore Gradle project-specific cache directory
+.gradle/
+
+# Ignore Gradle build output directory
+build/
+
+# Ignore Kotlin plugin data
+.kotlin
+
+# Logs
+*.log
+
+# Java class files and archives
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar
+*.tar.gz
+
+# Generated files
+/bin/
+/out/
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse files
+.project
+.classpath
+.settings/
+tmp/
+.metadata
+
+# VS Code files
+.vscode/
+
+# Local configuration files
+local.properties
+
+# JVM crash logs
+hs_err_pid*
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+logs/

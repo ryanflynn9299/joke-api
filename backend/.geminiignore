@@ -1,0 +1,43 @@
+# --- Build & Dependency Artifacts ---
+.gradle/
+build/
+bin/
+out/
+target/
+.gradle-task-name-cache
+
+# --- Hibernate & Database ---
+# Exclude database migrations if they are massive (optional)
+# src/main/resources/db/migration/
+*.hbm.xml
+# Hibernate generated sources (if using bytecode enhancement)
+**/generated/
+
+# --- IDE & Environment ---
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.project
+.settings/
+.classpath
+.nb-gradle/
+
+# --- Logs & Sensitive Data ---
+*.log
+logs/
+.env
+.env.*
+*.jks
+*.p12
+*.pem
+
+# --- Large Project Documentation/Media ---
+# Prevent Gemini from reading large binaries or docs by default
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.svg
+/docs/
