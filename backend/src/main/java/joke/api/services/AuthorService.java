@@ -2,7 +2,9 @@ package joke.api.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import io.micrometer.observation.annotation.Observed;
 import joke.api.entities.Author;
 import joke.api.repositories.AuthorRepository;
 
@@ -16,7 +18,9 @@ public class AuthorService {
         this.authorRepository = authorRepository;
     }
 
-    public Author getAuthorById(Long id) {
-        return this.authorRepository.findByAuthorId(id);
+    @Observed
+    @Transactional
+    public Author getAuthorById(Integer id) {
+        return this.authorRepository.findById(id).orElse(null);
     }
 } 

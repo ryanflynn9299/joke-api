@@ -15,11 +15,16 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLRestriction;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.SourceType;
 
+import jakarta.persistence.Transient;
+import java.util.List;
+import java.util.ArrayList;
 
 @Entity
+@SQLRestriction("is_deleted = false")
 @Table(name = "jokes")
 public class Joke {
     @Id
@@ -46,7 +51,7 @@ public class Joke {
     private OffsetDateTime modifiedDate;
 
     @Column(name = "last_jotd_datetime")
-    private LocalDate lastJotdDate;
+    private LocalDate lastJotdDatetime;
 
     @Column(name="is_deleted")
     private Boolean isDeleted;       // always False, never read if true
@@ -82,7 +87,26 @@ public class Joke {
         return this.modifiedDate;
     }
 
-    public LocalDate getLastJotdDate() {
-        return this.lastJotdDate;
+    public LocalDate getLastJotdDatetime() {
+        return this.lastJotdDatetime;
+    }
+
+    @Transient
+    public List<JokeSegment> getSegments() {
+        if (this.jokeContent == null || this.jokeContent.isEmpty()) {
+            return new ArrayList<>();
+        }
+        String[] parts = this.jokeContent.split(";");
+        List<JokeSegment> segments = new ArrayList<>();
+        
+        for (int i = 0; i < parts.length; i++) {
+            String text = parts[i].trim();
+            if (text.isEmpty()) continue;
+            
+            String type = (i == 0) ? "SETUP" : 
+                          (i == parts.length - 1) ? "PUNCHLINE" : "INTERACTION";
+            segments.add(new JokeSegment(text, type, i));
+        }
+        return segments;
     }
 }

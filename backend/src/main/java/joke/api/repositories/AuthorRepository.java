@@ -7,8 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import joke.api.entities.Author;
 
 
-public interface AuthorRepository extends JpaRepository<Author, Long> {
-
+public interface AuthorRepository extends JpaRepository<Author, Integer> {
     List<Author> findByAuthorFirstName(String authorFirstName);
-    Author findByAuthorId(Long authorId);
 }

@@ -1,0 +1,43 @@
+.inline-spoiler {
+  position: relative;
+  display: inline;
+  background-color: #125656 !important; /* Solid dark pacific-cyan-900 */
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.1s ease;
+  padding: 0 4px;
+  margin: 0 -2px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Force hiding of all contents including descendants with color classes */
+.inline-spoiler:not(.is-revealed),
+.inline-spoiler:not(.is-revealed) * {
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.inline-spoiler::selection {
+  background-color: transparent;
+}
+
+.inline-spoiler.is-revealed {
+  background-color: transparent !important;
+  color: inherit !important;
+  padding: 0;
+  margin: 0;
+  cursor: text;
+  user-select: text;
+  -webkit-user-select: text;
+  backdrop-filter: none;
+  border: none;
+}
+
+/* Hover feedback */
+.inline-spoiler:not(.is-revealed):hover {
+  background-color: rgba(26, 122, 122, 0.95);
+  box-shadow: 0 0 8px rgba(51, 204, 204, 0.2);
+}

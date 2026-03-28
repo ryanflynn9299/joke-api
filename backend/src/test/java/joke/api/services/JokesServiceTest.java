@@ -1,4 +1,4 @@
-package joke.api.controllers;
+package joke.api.services;
 
 public class JokesServiceTest {
 

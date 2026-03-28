@@ -7,7 +7,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import org.hibernate.annotations.SQLRestriction;
+
 @Entity
+@SQLRestriction("is_deleted = false")
 @Table(name = "author")
 public class Author {
     @Id
@@ -19,6 +22,9 @@ public class Author {
 
     @Column(nullable = false)
     private String authorLastName;
+
+    @Column(name = "is_deleted")
+    private Boolean isDeleted = false;
 
     protected Author() {
         
