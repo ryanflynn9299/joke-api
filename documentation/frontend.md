@@ -1,6 +1,6 @@
 # Frontend
 
-React 19 single-page application built with Vite 7 and Tailwind CSS 4.
+Canonical documentation for the `frontend/` directory. React 19 single-page application built with Vite 7 and Tailwind CSS 4.
 
 ## Stack
 

@@ -1,6 +1,6 @@
 # Backend
 
-Spring Boot REST API backed by PostgreSQL and Flyway migrations.
+Canonical documentation for the `backend/` directory. Spring Boot REST API backed by PostgreSQL and Flyway migrations.
 
 ## Stack
 

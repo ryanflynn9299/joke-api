@@ -2,10 +2,12 @@
 
 | Document | Contents |
 | -------- | -------- |
-| [backend.md](backend.md) | REST API, JOTD selection, project structure |
+| [backend.md](backend.md) | REST API, JOTD selection, project structure (`backend/`) |
 | [data.md](data.md) | PostgreSQL schema, migrations, content format |
-| [frontend.md](frontend.md) | SPA routes, data fetching, tests |
+| [frontend.md](frontend.md) | SPA routes, data fetching, tests (`frontend/`) |
 | [TODO.md](TODO.md) | Active backlog — refine and expand existing features |
+
+`backend/` and `frontend/` do not maintain separate README files — use the docs above.
 
 Frontend-specific references live under `frontend/docs/`:
 
