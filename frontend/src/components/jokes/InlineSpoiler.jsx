@@ -1,26 +1,32 @@
-import React from "react";
 import "../../styles/Spoiler.css";
 
 /**
- * An inline-wrapping spoiler component that matches Discord/Reddit behavior.
- * Hides text content until clicked while maintaining line flow.
+ * Inline click-to-reveal spoiler (Discord/Reddit pattern).
+ * While hidden, the content is removed from the accessibility tree and the
+ * control exposes an explicit "reveal" affordance; visually-transparent text
+ * would otherwise still be read aloud by screen readers.
  */
 export default function InlineSpoiler({ children, isRevealed, onClick }) {
+  if (isRevealed) {
+    return <span className="inline-spoiler is-revealed">{children}</span>;
+  }
+
   return (
     <span
-      className={`inline-spoiler ${isRevealed ? "is-revealed" : ""}`}
-      onClick={!isRevealed ? onClick : undefined}
+      className="inline-spoiler"
+      onClick={onClick}
       role="button"
-      aria-expanded={isRevealed}
-      tabIndex={isRevealed ? -1 : 0}
+      aria-label="Reveal hidden text"
+      aria-expanded={false}
+      tabIndex={0}
       onKeyDown={(e) => {
-        if (!isRevealed && (e.key === "Enter" || e.key === " ")) {
+        if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
           onClick();
         }
       }}
     >
-      {children}
+      <span aria-hidden="true">{children}</span>
     </span>
   );
 }

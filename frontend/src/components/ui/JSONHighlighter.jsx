@@ -16,7 +16,10 @@ export default function JSONHighlighter({ data }) {
 
         return (
           <div key={i} className="flex min-w-0">
-            <span className="opacity-20 inline-block w-4 mr-4 text-right select-none shrink-0">
+            <span
+              className="opacity-20 inline-block w-4 mr-4 text-right select-none shrink-0"
+              aria-hidden="true"
+            >
               {i + 1}
             </span>
             <span className="truncate whitespace-pre">

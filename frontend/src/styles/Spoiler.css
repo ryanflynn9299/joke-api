@@ -1,7 +1,8 @@
 .inline-spoiler {
   position: relative;
   display: inline;
-  background-color: #125656 !important; /* Solid dark pacific-cyan-900 */
+  /* pearl-aqua-700: >=3:1 against card surfaces (non-text contrast, WCAG 1.4.11) */
+  background-color: #1f7a7a !important;
   border-radius: 4px;
   cursor: pointer;
   transition:
@@ -38,6 +39,5 @@
 
 /* Hover feedback */
 .inline-spoiler:not(.is-revealed):hover {
-  background-color: rgba(26, 122, 122, 0.95);
-  box-shadow: 0 0 8px rgba(51, 204, 204, 0.2);
+  background-color: #29a3a3; /* pearl-aqua-600 */
 }

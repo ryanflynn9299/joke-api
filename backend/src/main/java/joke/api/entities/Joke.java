@@ -83,7 +83,7 @@ public class Joke {
         return this.createdDate;
     }
 
-    public OffsetDateTime getModidifiedDateTime() {
+    public OffsetDateTime getModifiedDateTime() {
         return this.modifiedDate;
     }
 

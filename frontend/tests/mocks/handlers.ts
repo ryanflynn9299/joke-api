@@ -20,8 +20,9 @@ export const mockJokesList = [
 
 export const handlers = [
   http.get("*/api/v1/jokes/:id", ({ params }) => {
-    if (params.id === "1") {
-      return HttpResponse.json(mockJoke);
+    const joke = mockJokesList.find((j) => j.jokeId === params.id);
+    if (joke) {
+      return HttpResponse.json(joke);
     }
     return new HttpResponse(null, { status: 404 });
   }),
